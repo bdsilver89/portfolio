@@ -1,12 +1,13 @@
 import Footer from "@components/Footer";
 import Navbar from "@components/Navbar";
+import Page from "@layouts/Page";
 
 export default function Home() {
   return (
-    <main className="bg-gray-800">
+    <Page>
       <Navbar />
-      <h1 className="text-white">Home</h1>
+      <h1>test</h1>
       <Footer />
-    </main>
+    </Page>
   );
 }
