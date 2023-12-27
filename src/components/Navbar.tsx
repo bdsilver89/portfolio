@@ -3,6 +3,7 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/20/solid";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
+import DarkModeSwitch from "@components/DarkModeSwitch";
 import { navLinks } from "@data/nav";
 import { cn } from "@lib/utils";
 
@@ -39,7 +40,7 @@ export default function Navbar() {
 
   return (
     <header>
-      <nav className={cn(scrolled ? "bg-metallic-400" : "bg-metallic-500", "fixed top-0 z-20 w-full py-5")}>
+      <nav className={cn(scrolled ? "bg-gray-400" : "bg-gray-500", "z-20 w-full py-5")}>
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between">
           <Link
             to="/"
@@ -53,6 +54,7 @@ export default function Navbar() {
             <p>
               Brian &nbsp;<span>Developer</span>
             </p>
+            <DarkModeSwitch useIcon />
           </Link>
 
           <ul className="hidden list-none flex-row gap-10 px-4 sm:flex">
@@ -60,7 +62,7 @@ export default function Navbar() {
               <li
                 key={nav.id}
                 className={cn(
-                  active === nav.title ? "text-metallic-300" : "text-metallic-100",
+                  active === nav.title ? "text-gray-300" : "text-gray-100",
                   "cursor-pointer font-medium hover:text-opacity-80",
                 )}
                 onClick={() => setActive(nav.title)}
@@ -92,7 +94,7 @@ export default function Navbar() {
                 <li
                   key={nav.id}
                   className={cn(
-                    active === nav.title ? "text-metallic-300" : "text-metallic-100",
+                    active === nav.title ? "text-gray-300" : "text-gray-100",
                     "cursor-pointer font-medium hover:text-opacity-80",
                   )}
                 >

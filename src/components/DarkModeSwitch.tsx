@@ -2,15 +2,24 @@ import { Switch } from "@headlessui/react";
 
 import { cn } from "@lib/utils";
 import { useDarkModeContext } from "@context/DarkMode";
+import { MoonIcon, SunIcon } from "@heroicons/react/20/solid";
 
-export default function DarkModeSwitch() {
+export type DarkModeSwitchProps = {
+  useIcon?: boolean;
+};
+
+export default function DarkModeSwitch(props: DarkModeSwitchProps) {
+  const { useIcon = true } = props;
+
   const { isDarkMode, setDarkMode } = useDarkModeContext();
 
   function toggleDarkMode() {
     setDarkMode(!isDarkMode);
   }
 
-  return (
+  return useIcon ? (
+    <button onClick={toggleDarkMode}>{isDarkMode ? <MoonIcon /> : <SunIcon />}</button>
+  ) : (
     <Switch
       checked={!!isDarkMode}
       onChange={toggleDarkMode}
