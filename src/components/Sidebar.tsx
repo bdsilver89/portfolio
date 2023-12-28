@@ -6,12 +6,6 @@ import { GitHubIcon, LinkedInIcon } from "@components/icons";
 import { cn } from "@lib/utils";
 import { useDarkModeContext } from "@context/DarkMode";
 
-const sidebarIconStyleBase =
-  "group relative mx-auto my-2 flex h-12 cursor-pointer items-center rounded-3xl bg-gray-400 text-blue-500 transition-all duration-300 ease-linear hover:rounded-xl hover:bg-blue-400 hover:text-white dark:bg-gray-800 dark:text-blue-300";
-
-const sideBarIconHoverTextStyle =
-  "absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100 group-hover:scale-100";
-
 const iconStyle = "h-6 w-6";
 
 type SideBarIconProps = {
@@ -27,10 +21,21 @@ type SideBarIconLinkProps = SideBarIconProps & {
 
 function SideBarIcon(props: SideBarIconProps) {
   return (
-    <div className={cn(props.isOpen ? "w-56 justify-start px-3" : "w-12 justify-center", sidebarIconStyleBase)}>
+    <div
+      className={cn(
+        props.isOpen ? "w-56 justify-start px-3" : "w-12 justify-center",
+        "group relative mx-auto my-2 flex h-12 cursor-pointer items-center rounded-3xl bg-gray-400 text-blue-500 transition-all duration-300 ease-linear hover:rounded-xl hover:bg-blue-400 hover:text-white dark:bg-gray-800 dark:text-blue-300 dark:hover:text-black",
+      )}
+    >
       {props.icon}
       {!props.isOpen ? (
-        <span className={sideBarIconHoverTextStyle}>{props.text}</span>
+        <span
+          className={
+            "absolute left-14 m-2 w-auto min-w-max origin-left scale-0 rounded-md bg-gray-900 p-2 text-xs font-bold text-white shadow-md transition-all duration-100 group-hover:scale-100"
+          }
+        >
+          {props.text}
+        </span>
       ) : (
         <span className="m-2 font-bold">{props.text}</span>
       )}
